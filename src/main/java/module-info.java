@@ -3,6 +3,6 @@ module com.example.gradecalculator {
     requires javafx.fxml;
 
 
-    opens com.example.gradecalculator to javafx.fxml;
-    exports com.example.gradecalculator;
+    opens gradecalc to javafx.fxml;
+    exports gradecalc;
 }

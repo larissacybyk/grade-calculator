@@ -9,6 +9,7 @@ public class CalcController {
 
     @FXML
     protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
+        welcomeText.setText("How are your grades?");
+        welcomeText.setStyle("-fx-border-color: green; -fx-background-color: #eeeaea; -fx-text-fill: green; -fx-border-width: 3");
     }
 }

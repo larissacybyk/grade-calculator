@@ -24,8 +24,8 @@ tasks.withType(JavaCompile) {
 }
 
 application {
-    mainModule = 'com.example.gradecalculator'
-    mainClass = 'com.example.gradecalculator.HelloApplication'
+    mainModule = 'gradecalc'
+    mainClass = 'gradecalc.CalcApplication'
 }
 
 javafx {

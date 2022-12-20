@@ -1,15 +1,15 @@
 package gradecalc;
 
 public class Component {
-    private int weight;
-    private int grade;
+    private double weight;
+    private double grade;
 
-    public Component(int weight, int grade){
+    public Component(double weight, double grade){
         this.grade = grade;
         this.weight = weight;
     }
 
-    public int getWeight() {
+    public double getWeight() {
         return weight;
     }
 
@@ -17,7 +17,7 @@ public class Component {
         this.weight = weight;
     }
 
-    public int getGrade() {
+    public double getGrade() {
         return grade;
     }
 

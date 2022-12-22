@@ -2,7 +2,6 @@ package gradecalc;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
@@ -35,10 +34,9 @@ public class CalcController {
     public void updateShownGrade(){
         List<Component> components = getComponentList();
         double numGrade = calc.getGrade(components);
-        letterGrade letGrade = getLetterGrade(numGrade);
+        LetterGradeDisplay.setText(getLetterGrade(numGrade).toString());
         DecimalFormat df = new DecimalFormat("#.##");
         String percentageGrade = df.format(numGrade) + "%";
-        LetterGradeDisplay.setText(letGrade.toString());
         PercentageGrade.setText(percentageGrade);
     }
     public List<Component> getComponentList(){

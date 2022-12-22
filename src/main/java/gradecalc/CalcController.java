@@ -1,12 +1,13 @@
 package gradecalc;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +27,7 @@ public class CalcController {
     }
     public void initialize(){
         calc = new Calculation();
+        addTextFieldListeners();
     }
 
     public void updateShownGrade(){
@@ -58,6 +60,26 @@ public class CalcController {
             }
         }
         return components;
+    }
+
+    public void addTextFieldListeners(){
+
+        for(Node node: ComponentGrid.getChildren()) {
+            if(node.getClass().equals(TextField.class)){
+                TextField tf = (TextField) node;
+                tf.textProperty().addListener(new ChangeListener<String>() {
+                    @Override
+                    public void changed(final ObservableValue<? extends String> ov, final String oldValue, final String newValue) {
+                        String stripped = newValue.replaceAll("[^0-9.]","");
+                        while(stripped.indexOf(".") != stripped.lastIndexOf(".")){
+                            int index = stripped.lastIndexOf(".");
+                            stripped = stripped.substring(0, index) + stripped.substring(index + 1);
+                        }
+                        if(!stripped.equals(newValue)) tf.setText(stripped);
+                    }
+                });
+            }
+        }
     }
     public letterGrade getLetterGrade(double grade){
         if(grade < 65.0){

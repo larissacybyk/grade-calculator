@@ -8,6 +8,8 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +36,8 @@ public class CalcController {
         List<Component> components = getComponentList();
         double numGrade = calc.getGrade(components);
         letterGrade letGrade = getLetterGrade(numGrade);
-        String percentageGrade = numGrade + "%";
+        DecimalFormat df = new DecimalFormat("#.##");
+        String percentageGrade = df.format(numGrade) + "%";
         LetterGradeDisplay.setText(letGrade.toString());
         PercentageGrade.setText(percentageGrade);
     }
